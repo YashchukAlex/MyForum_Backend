@@ -25,6 +25,7 @@ namespace MyForum_Backend.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        
 
         public AccountController()
         {
