@@ -13,6 +13,7 @@ namespace MyForum_Backend.Models.DB_Models
     {
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentID { get; set; }
 
         [Required]
