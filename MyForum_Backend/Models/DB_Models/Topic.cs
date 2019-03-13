@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace MyForum_Backend.Models.DB_Models
 {
     [Table("Topic")]
-    public class Topic : IdentityDbContext
+    public class Topic
     {
         [Key]
         [Required]

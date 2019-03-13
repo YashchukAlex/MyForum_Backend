@@ -9,7 +9,7 @@ namespace MyForum_Backend.Models.DB_Models
     using System;
 
     [Table("Comment")]
-    public class Comment : IdentityDbContext
+    public class Comment
     {
         [Key]
         [Required]

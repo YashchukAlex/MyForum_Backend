@@ -6,7 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace MyForum_Backend.Models.DB_Models
 {
     [Table("CommentRating")]
-    public class CommentRating : IdentityDbContext
+    public class CommentRating
     {
         [Key]
         [Required]

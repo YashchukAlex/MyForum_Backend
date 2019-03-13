@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace MyForum_Backend.Models.DB_Models
 {
     [Table("Status")]
-    public class Status : IdentityDbContext
+    public class Status
     {
         [Key]
         [Required]
