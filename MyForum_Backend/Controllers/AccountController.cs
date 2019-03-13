@@ -14,6 +14,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using MyForum_Backend.Models;
+using MyForum_Backend.Models.Binding_Models;
 using MyForum_Backend.Providers;
 using MyForum_Backend.Results;
 
@@ -329,9 +330,23 @@ namespace MyForum_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Login = model.Email,
+                    CreateTimeAccount = DateTime.Now.ToLocalTime(),
+                    LastOnline = DateTime.Now.ToLocalTime()
+                };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            result = await UserManager.AddToRolesAsync(user.Id, "user");
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
 
             if (!result.Succeeded)
             {
@@ -371,6 +386,64 @@ namespace MyForum_Backend.Controllers
             {
                 return GetErrorResult(result); 
             }
+            return Ok();
+        }
+
+        // GET api/Account/Roles
+        [HttpGet]
+        [Authorize(Roles = "Super admin")]
+        [Route("Roles/{userID}")]
+        public async Task<IHttpActionResult> GetRoles(string userID)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IList<string> result = await UserManager.GetRolesAsync(userID);
+
+            return Ok(result);
+        }
+
+        // POST api/Account/Roles/{userID}
+        [HttpPost]
+        [Authorize(Roles = "Super admin")]
+        [Route("Roles/{userID}")]
+        public async Task<IHttpActionResult> PostRoles(string userID, UserRolesAddBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.AddToRolesAsync(userID, model.NewRoles);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
+        }
+
+        // DELETE api/Account/Roles/{userID}/{roleName}
+        [HttpDelete]
+        [Authorize(Roles = "Super admin")]
+        [Route("Roles/{userID}/{roleName}")]
+        public async Task<IHttpActionResult> DeleteRole(string userID, string roleName)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.RemoveFromRoleAsync(userID, roleName);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
             return Ok();
         }
 

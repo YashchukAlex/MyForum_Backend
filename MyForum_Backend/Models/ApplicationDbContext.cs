@@ -17,11 +17,11 @@ namespace MyForum_Backend.Models
         public DbSet<CommentRating> CommentRatings { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Topic> Topics { get; set; }
-        public DbSet<UserAdditionalData> UserAdditionalData { get; set; }
 
         public ApplicationDbContext()
             : base("DB_Forum")
         {
+            Database.SetInitializer(new ApplicationDBInitialize());
         }
 
         public static ApplicationDbContext Create()
@@ -43,11 +43,11 @@ namespace MyForum_Backend.Models
                 .HasIndex(l => new { l.CommentRefID, l.UserRefID })
                 .IsUnique(true);
 
-            modelBuilder.Entity<UserAdditionalData>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasIndex(l => l.Login)
                 .IsUnique();
 
-            modelBuilder.Entity<UserAdditionalData>()
+            modelBuilder.Entity<ApplicationUser>()
                 .HasIndex(l => l.NameImage)
                 .IsUnique();
         }

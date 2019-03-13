@@ -13,7 +13,6 @@ namespace MyForum_Backend.Models.DB_Models
         public int CommentRatingID { get; set; }
 
         [Required]
-        [DefaultValue(null)]
         public bool Rating { get; set; }
 
         #region Foreign keys
