@@ -19,9 +19,6 @@ namespace MyForum_Backend.Models
     public class ApplicationUser : IdentityUser
     {
         #region Additional data to User
-        [Index(IsUnique = true)]
-        [MaxLength(50)]
-        public string Login { get; set; }
 
         public string NameImage { get; set; }
 
@@ -86,7 +83,7 @@ namespace MyForum_Backend.Models
                 ApplicationUser user = new ApplicationUser
                 {
                     Email = model.Email,
-                    Login = model.Login,
+                    UserName = model.Login,
                     CreateTimeAccount = DateTime.Now.ToLocalTime(),
                     LastOnline = DateTime.Now.ToLocalTime()
                 };

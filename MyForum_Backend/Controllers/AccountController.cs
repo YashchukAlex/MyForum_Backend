@@ -333,7 +333,7 @@ namespace MyForum_Backend.Controllers
             var user = new ApplicationUser
                 {
                     Email = model.Email,
-                    Login = model.Login,
+                    UserName = model.Login,
                     CreateTimeAccount = DateTime.Now.ToLocalTime(),
                     LastOnline = DateTime.Now.ToLocalTime()
                 };
@@ -345,7 +345,7 @@ namespace MyForum_Backend.Controllers
                 return GetErrorResult(result);
             }
 
-            result = await UserManager.AddToRolesAsync(user.Id, "user");
+            result = await UserManager.AddToRolesAsync(user.Id, "test");
 
             if (!result.Succeeded)
             {

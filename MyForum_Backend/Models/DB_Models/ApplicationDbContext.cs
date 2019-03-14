@@ -21,7 +21,6 @@ namespace MyForum_Backend.Models
         public ApplicationDbContext()
             : base("DB_Forum")
         {
-            ApplicationDBInitialize initialize = new ApplicationDBInitialize(Create());
         }
 
         public static ApplicationDbContext Create()
