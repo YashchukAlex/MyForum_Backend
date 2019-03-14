@@ -8,9 +8,7 @@ namespace MyForum_Backend.Models.DB_Models
     [Table("Topic")]
     public class Topic
     {
-        [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TopicID { get; set; }
 
         [Required]
@@ -43,7 +41,7 @@ namespace MyForum_Backend.Models.DB_Models
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         [ForeignKey("Status")]
-        public string StatusRefID { get; set; }
+        public int StatusRefID { get; set; }
         public virtual Status Status { get; set; } 
         #endregion
     }

@@ -21,35 +21,12 @@ namespace MyForum_Backend.Models
         public ApplicationDbContext()
             : base("DB_Forum")
         {
-            Database.SetInitializer(new ApplicationDBInitialize());
+            ApplicationDBInitialize initialize = new ApplicationDBInitialize(Create());
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Category>()
-                .HasIndex(l => l.Name)
-                .IsUnique();
-
-            modelBuilder.Entity<Status>()
-                .HasIndex(l => l.Name)
-                .IsUnique();
-
-            modelBuilder.Entity<CommentRating>()
-                .HasIndex(l => new { l.CommentRefID, l.UserRefID })
-                .IsUnique(true);
-
-            modelBuilder.Entity<ApplicationUser>()
-                .HasIndex(l => l.Login)
-                .IsUnique();
-
-            modelBuilder.Entity<ApplicationUser>()
-                .HasIndex(l => l.NameImage)
-                .IsUnique();
         }
     }
 }

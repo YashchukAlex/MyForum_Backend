@@ -332,21 +332,20 @@ namespace MyForum_Backend.Controllers
 
             var user = new ApplicationUser
                 {
-                    UserName = model.Email,
                     Email = model.Email,
-                    Login = model.Email,
+                    Login = model.Login,
                     CreateTimeAccount = DateTime.Now.ToLocalTime(),
                     LastOnline = DateTime.Now.ToLocalTime()
                 };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
-            result = await UserManager.AddToRolesAsync(user.Id, "user");
-
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
             }
+
+            result = await UserManager.AddToRolesAsync(user.Id, "user");
 
             if (!result.Succeeded)
             {

@@ -11,9 +11,7 @@ namespace MyForum_Backend.Models.DB_Models
     [Table("Comment")]
     public class Comment
     {
-        [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentID { get; set; }
 
         [Required]

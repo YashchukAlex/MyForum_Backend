@@ -7,12 +7,10 @@ namespace MyForum_Backend.Models.DB_Models
     [Table("Status")]
     public class Status
     {
-        [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StatusID { get; set; }
 
-        [Required]
+        [Index(IsUnique = true)]
         [MaxLength(50)]
         public string Name { get; set; }
     }
