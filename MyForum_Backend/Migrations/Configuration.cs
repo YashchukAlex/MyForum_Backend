@@ -1,6 +1,7 @@
+using MyForum_Backend.Models;
+
 namespace MyForum_Backend.Migrations
 {
-    using MyForum_Backend.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,12 +11,12 @@ namespace MyForum_Backend.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MyForum_Backend.Models.ApplicationDbContext context)
         {
-            ApplicationDBInitialize initialize = new ApplicationDBInitialize(context);
+            new ApplicationDBInitialize(context);
         }
     }
 }

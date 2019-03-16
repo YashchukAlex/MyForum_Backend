@@ -216,10 +216,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903141916369_BasicMigration.cs" />
-    <Compile Include="Migrations\201903141916369_BasicMigration.Designer.cs">
-      <DependentUpon>201903141916369_BasicMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Binding_Models\AccountBindingModels.cs" />
     <Compile Include="Models\DB_Models\ApplicationDbContext.cs" />
@@ -270,15 +266,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903141916369_BasicMigration.resx">
-      <DependentUpon>201903141916369_BasicMigration.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="Properties\PublishProfiles\MyForum - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MyForum - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

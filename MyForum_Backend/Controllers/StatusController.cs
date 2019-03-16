@@ -98,7 +98,7 @@ namespace MyForum_Backend.Controllers
 
         // DELETE: api/Status/{id}
         [HttpDelete]
-        [Route("{}")]
+        [Route("{id}")]
         [ResponseType(typeof(Status))]
         public async Task<IHttpActionResult> DeleteStatus(int id)
         {
