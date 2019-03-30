@@ -15,6 +15,7 @@ using MyForum_Backend.Models.DB_Models;
 namespace MyForum_Backend.Controllers
 {
     [RoutePrefix("api/Status")]
+    [Authorize(Roles = "Super admin","admin")]
     public class StatusController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
