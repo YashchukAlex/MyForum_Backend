@@ -18,8 +18,8 @@ namespace MyForum_Backend
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            var cors = new EnableCorsAttribute("http://localhost:3000", "*", "*");
-            config.EnableCors();
+            //var cors = new EnableCorsAttribute("http://localhost:3000", "*", "*");
+            //config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -19,7 +19,7 @@ namespace MyForum_Backend.Models
         public DbSet<Topic> Topics { get; set; }
 
         public ApplicationDbContext()
-            : base("DB_Forum_local")
+            : base("DB_Forum")
         {
 
         }

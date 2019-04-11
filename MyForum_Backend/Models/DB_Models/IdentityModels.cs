@@ -76,8 +76,8 @@ namespace MyForum_Backend.Models
                 {
                     Email = "Test@gmail.com",
                     Login = "Admin",
-                    Password = "test_3_13_2019",
-                    ConfirmPassword = "test_3_13_2019",
+                    Password = "test3132019",
+                    ConfirmPassword = "test3132019",
                 };
 
                 ApplicationUser user = new ApplicationUser
