@@ -59,12 +59,18 @@ namespace MyForum_Backend.Controllers
         public UserInfoViewModel GetUserInfo()
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
+            var user = UserManager.FindById(User.Identity.GetUserId());
 
             return new UserInfoViewModel
             {
-                Login = User.Identity.GetUserName(),
-                HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                Login = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Roles = user.Roles,
+                LockoutEnabled = user.LockoutEnabled      
+
+                //HasRegistered = externalLogin == null,
+                //LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
 
@@ -337,7 +343,7 @@ namespace MyForum_Backend.Controllers
                 return GetErrorResult(result);
             }
 
-            result = await UserManager.AddToRolesAsync(user.Id, "test");
+            result = await UserManager.AddToRolesAsync(user.Id, "User");
 
             if (!result.Succeeded)
             {

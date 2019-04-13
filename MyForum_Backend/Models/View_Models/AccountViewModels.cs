@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyForum_Backend.Models
 {
@@ -29,9 +30,13 @@ namespace MyForum_Backend.Models
     {
         public string Login { get; set; }
 
-        public bool HasRegistered { get; set; }
+        public string Email { get; set; }
 
-        public string LoginProvider { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public ICollection<IdentityUserRole> Roles { get; set; }
+
+        public bool LockoutEnabled { get; set; }
     }
 
     public class UserLoginInfoViewModel
