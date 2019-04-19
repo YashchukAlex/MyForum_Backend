@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace MyForum_Backend.Models
@@ -34,7 +35,7 @@ namespace MyForum_Backend.Models
 
         public string PhoneNumber { get; set; }
 
-        public ICollection<IdentityUserRole> Roles { get; set; }
+        public IList<string> Roles { get; set; }
 
         public bool LockoutEnabled { get; set; }
     }

@@ -66,7 +66,7 @@ namespace MyForum_Backend.Controllers
                 Login = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-                Roles = user.Roles,
+                Roles = UserManager.GetRoles(userId: user.Id),
                 LockoutEnabled = user.LockoutEnabled      
 
                 //HasRegistered = externalLogin == null,
